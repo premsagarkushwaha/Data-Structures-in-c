@@ -52,6 +52,34 @@ void atbegin(int t)
 	}
 }
 
+void atposition(int a, int d)
+{
+	if(a==0)
+	{
+		atbegin(d);
+	}
+	else
+	{
+		struct node *temp = head;
+		for(int i=0;i<a-1;i++)
+		{
+			temp = temp->link;
+			if(temp==NULL)
+			{
+				
+				printf("%d position is greater than size: error in linked list length", d);
+				return;
+			}
+			
+		}
+		struct node *curr = (struct node *)malloc(sizeof(struct node));
+		curr->data = d;
+		curr->link = temp->link;
+		temp->link = curr;
+	}
+	
+}
+
 void traverse()
 {
 	struct node *temp = head;
@@ -62,10 +90,7 @@ void traverse()
 	}
 }
 
-void atmiddle(int t)
-{
-	
-}
+
 
 
 int main(){
@@ -75,6 +100,7 @@ int main(){
 	create(51);
 	create(52);
 	atbegin(4);
+	atposition(2,89);
 	traverse();
 	
 
